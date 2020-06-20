@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib",
+    "declaration": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "noImplicitAny": true
+  }
+}
