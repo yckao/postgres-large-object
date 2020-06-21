@@ -5,8 +5,8 @@ import { expect } from 'chai'
 import * as crypto from 'crypto'
 
 const connectionURL = 'postgres://nodetest:nodetest@localhost/nodetest'
-const testFile = __dirname + '/postgresjs.svg'
-const testOutFile = __dirname + '/out.svg'
+const testFile = __dirname + '/../../assets/postgresjs.svg'
+const testOutFile = __dirname + '/../../assets/out.svg'
 const testFileSize = fs.statSync(testFile).size
 const testBuf = new Buffer('0123456789ABCDEF', 'hex')
 
