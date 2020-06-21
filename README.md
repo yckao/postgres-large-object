@@ -2,6 +2,7 @@
 
 ![](https://github.com/yckao/postgres-large-object/workflows/Test/badge.svg)
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
+[![codecov](https://codecov.io/gh/yckao/postgres-large-object/branch/master/graph/badge.svg)](https://codecov.io/gh/yckao/postgres-large-object)
 
 Large object support for PostgreSQL clients using the [postgres](https://www.npmjs.com/package/postgres) library.
 
