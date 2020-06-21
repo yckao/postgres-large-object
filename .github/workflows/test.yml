@@ -34,3 +34,4 @@ jobs:
       - run: yarn test
         env:
           POSTGRES_URL: postgres://nodetest:nodetest@postgres/nodetest
+      - uses: codecov/codecov-action@v1

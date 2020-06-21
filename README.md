@@ -1,8 +1,11 @@
 # postgres-large-object
 
+![](https://github.com/yckao/postgres-large-object/workflows/Test/badge.svg)
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
+
 Large object support for PostgreSQL clients using the [postgres](https://www.npmjs.com/package/postgres) library.
 
-The API of this library is exactly same with [node-postgres-large-object](https://www.npmjs.com/package/postgres-large-object) and resembles the JDBC library for PostgreSQL.
+The API of this library is exactly same with [node-postgres-large-object](https://www.npmjs.com/package/node-pg-large-object) and resembles the JDBC library for PostgreSQL.
 
 ## Installation
 
