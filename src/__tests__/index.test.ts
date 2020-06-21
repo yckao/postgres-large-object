@@ -4,7 +4,7 @@ import * as pglo from '..'
 import { expect } from 'chai'
 import * as crypto from 'crypto'
 
-const connectionURL = 'postgres://nodetest:nodetest@localhost/nodetest'
+const connectionURL = process.env.POSTGRES_URL || 'postgres://nodetest:nodetest@localhost/nodetest'
 const testFile = __dirname + '/../../assets/postgresjs.svg'
 const testOutFile = __dirname + '/../../assets/out.svg'
 const testFileSize = fs.statSync(testFile).size
