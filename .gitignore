@@ -110,4 +110,4 @@ dist
 .yarn/cache
 
 lib/*
-src/__test__/out.svg
+src/__tests__/out.svg
