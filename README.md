@@ -50,34 +50,35 @@ const postgres = require('postgres')
 const { LargeObjectManager } = require('postgres-large-object')
 const { createWriteStream } = require('fs')
 
-const db = postgres('postgres://postgres:1234@localhost/postgres')
+const sql = postgres('postgres://postgres:1234@localhost/postgres')
 
 // When working with Large Objects, always use a transaction
-db.begin((tx) => {
-  const man = new LargeObjectManager(tx)
+sql
+  .begin((tx) => {
+    const man = new LargeObjectManager(tx)
 
-  // A LargeObject oid, probably stored somewhere in one of your own tables.
-  const oid = 123
+    // A LargeObject oid, probably stored somewhere in one of your own tables.
+    const oid = 123
 
-  // If you are on a high latency connection and working with
-  // large LargeObjects, you should increase the buffer size.
-  // The buffer should be divisible by 2048 for best performance
-  // (2048 is the default page size in PostgreSQL, see LOBLKSIZE)
-  const bufferSize = 16384
+    // If you are on a high latency connection and working with
+    // large LargeObjects, you should increase the buffer size.
+    // The buffer should be divisible by 2048 for best performance
+    // (2048 is the default page size in PostgreSQL, see LOBLKSIZE)
+    const bufferSize = 16384
 
-  return man.openAndReadableStreamAsync(oid, bufferSize).then(([size, stream]) => {
-    console.log('Streaming a large object with a total size of', size)
+    return man.openAndReadableStreamAsync(oid, bufferSize).then(([size, stream]) => {
+      console.log('Streaming a large object with a total size of', size)
 
-    // Store it as an image
-    const fileStream = createWriteStream('my-file.png')
-    stream.pipe(fileStream)
+      // Store it as an image
+      const fileStream = createWriteStream('my-file.png')
+      stream.pipe(fileStream)
 
-    return new Promise((resolve, reject) => {
-      stream.on('end', resolve)
-      stream.on('error', reject)
+      return new Promise((resolve, reject) => {
+        stream.on('end', resolve)
+        stream.on('error', reject)
+      })
     })
   })
-})
   .then(() => {
     console.log('Done!')
   })
@@ -93,31 +94,32 @@ const postgres = require('postgres')
 const { LargeObjectManager } = require('postgres-large-object')
 const { createReadStream } = require('fs')
 
-const db = postgres('postgres://postgres:1234@localhost/postgres')
+const sql = postgres('postgres://postgres:1234@localhost/postgres')
 
 // When working with Large Objects, always use a transaction
-db.tx((tx) => {
-  const man = new LargeObjectManager(tx)
+sql
+  .begin((tx) => {
+    const man = new LargeObjectManager(tx)
 
-  // If you are on a high latency connection and working with
-  // large LargeObjects, you should increase the buffer size.
-  // The buffer should be divisible by 2048 for best performance
-  // (2048 is the default page size in PostgreSQL, see LOBLKSIZE)
-  const bufferSize = 16384
+    // If you are on a high latency connection and working with
+    // large LargeObjects, you should increase the buffer size.
+    // The buffer should be divisible by 2048 for best performance
+    // (2048 is the default page size in PostgreSQL, see LOBLKSIZE)
+    const bufferSize = 16384
 
-  return man.createAndWritableStreamAsync(bufferSize).then(([oid, stream]) => {
-    // The server has generated an oid
-    console.log('Creating a large object with the oid', oid)
+    return man.createAndWritableStreamAsync(bufferSize).then(([oid, stream]) => {
+      // The server has generated an oid
+      console.log('Creating a large object with the oid', oid)
 
-    const fileStream = createReadStream('upload-my-file.png')
-    fileStream.pipe(stream)
+      const fileStream = createReadStream('upload-my-file.png')
+      fileStream.pipe(stream)
 
-    return new Promise((resolve, reject) => {
-      stream.on('finish', resolve)
-      stream.on('error', reject)
+      return new Promise((resolve, reject) => {
+        stream.on('finish', resolve)
+        stream.on('error', reject)
+      })
     })
   })
-})
   .then(() => {
     console.log('Done!')
   })
