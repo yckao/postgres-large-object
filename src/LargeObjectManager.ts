@@ -1,8 +1,8 @@
 import { Sql } from 'postgres'
-import LargeObject from './LargeObject'
+import { LargeObject } from './LargeObject'
 import { callbackify, isNumber } from 'util'
-import ReadStream from './ReadStream'
-import WriteStream from './WriteStream'
+import { ReadStream } from './ReadStream'
+import { WriteStream } from './WriteStream'
 
 enum MODE {
   WRITE = 0x00020000,
@@ -20,7 +20,7 @@ enum MODE {
  * @param {module:postgres/Sql} sql A postgres (https://www.npmjs.com/package/postgres) transaction
  *         object as given by `sql.begin(fn)`
  */
-class LargeObjectManager {
+export class LargeObjectManager {
   public static WRITE = MODE.WRITE
   public static READ = MODE.READ
   public static READWRITE = MODE.READWRITE
@@ -202,5 +202,3 @@ class LargeObjectManager {
       .catch((err) => callback(err))
   }
 }
-
-export = LargeObjectManager

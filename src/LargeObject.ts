@@ -1,7 +1,7 @@
 import { Sql } from 'postgres'
 import { callbackify } from 'util'
-import ReadStream from './ReadStream'
-import WriteStream from './WriteStream'
+import { ReadStream } from './ReadStream'
+import { WriteStream } from './WriteStream'
 
 enum SEEK_REF {
   SEEK_SET = 0,
@@ -14,7 +14,7 @@ enum SEEK_REF {
  * @constructor
  * @exports postgres-large-object/lib/LargeObject
  */
-class LargeObject {
+export class LargeObject {
   /**
    * A seek from the beginning of a object
    * @constant {number}
@@ -211,4 +211,3 @@ class LargeObject {
     return new WriteStream(this, bufferSize)
   }
 }
-export = LargeObject

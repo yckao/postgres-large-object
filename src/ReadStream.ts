@@ -1,7 +1,7 @@
 import * as stream from 'stream'
-import LargeObject from './LargeObject'
+import { LargeObject } from './LargeObject'
 
-class ReadStream extends stream.Readable {
+export class ReadStream extends stream.Readable {
   private _largeObject: LargeObject
   constructor(largeObject: LargeObject, bufferSize: number) {
     super({
@@ -29,5 +29,3 @@ class ReadStream extends stream.Readable {
     })
   }
 }
-
-export = ReadStream

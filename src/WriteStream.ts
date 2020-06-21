@@ -1,7 +1,7 @@
 import * as stream from 'stream'
-import LargeObject from './LargeObject'
+import { LargeObject } from './LargeObject'
 
-class WriteStream extends stream.Writable {
+export class WriteStream extends stream.Writable {
   private _largeObject: LargeObject
   constructor(largeObject: LargeObject, bufferSize: number) {
     super({
@@ -18,5 +18,3 @@ class WriteStream extends stream.Writable {
     this._largeObject.write(chunk, callback)
   }
 }
-
-export = WriteStream
