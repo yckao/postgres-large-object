@@ -1,8 +1,10 @@
 # postgres-large-object
 
-![](https://github.com/yckao/postgres-large-object/workflows/Test/badge.svg)
-[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/yckao/postgres-large-object/Test)
+![GitHub](https://img.shields.io/github/license/yckao/postgres-large-object)
 [![codecov](https://codecov.io/gh/yckao/postgres-large-object/branch/master/graph/badge.svg)](https://codecov.io/gh/yckao/postgres-large-object)
+![npm](https://img.shields.io/npm/dw/postgres-large-object)
+![npm](https://img.shields.io/npm/v/postgres-large-object)
 
 Large object support for PostgreSQL clients using the [postgres](https://www.npmjs.com/package/postgres) library.
 
@@ -134,3 +136,4 @@ npm test
 ```
 
 The test assumes that postgres://nodetest:nodetest@localhost/nodetest is a valid database.
+Or specify connection URL with environment variable POSTGRES_URL
