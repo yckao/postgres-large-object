@@ -1,4 +1,4 @@
-import { Sql } from 'postgres'
+import { TransactionSql } from 'postgres'
 import { LargeObject } from './LargeObject'
 import { callbackify, isNumber } from 'util'
 import { ReadStream } from './ReadStream'
@@ -25,8 +25,8 @@ export class LargeObjectManager {
   public static READ = MODE.READ
   public static READWRITE = MODE.READWRITE
 
-  private _sql: Sql<never>
-  constructor(sql: Sql<never>) {
+  private _sql: TransactionSql<never>
+  constructor(sql: TransactionSql<never>) {
     this._sql = sql
   }
 
